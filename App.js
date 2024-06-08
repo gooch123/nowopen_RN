@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "./screens/HomeScreen";
+import LoginScreen from "./screens/LoginScreen";
+import StoreScreen from "./screens/StoreScreen";
+import StoreDetailsScreen from "./screens/StoreDetailsScreen";
+import SignUpScreen from "./screens/SignUpScreen";
+import CreateStoreScreen from "./screens/CreateStoreScreen";
+import CreateNoticeScreen from "./screens/CreateNoticeScreen";
+import UpdateStoreScreen from "./screens/UpdateStoreScreen";
+import BookmarkScreen from "./screens/BookmarkScreen"; // 추가
 
-export default function App() {
+const Stack = createStackNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Store" component={StoreScreen} />
+        <Stack.Screen name="StoreDetails" component={StoreDetailsScreen} />
+        <Stack.Screen name="SignUp" component={SignUpScreen} />
+        <Stack.Screen name="CreateStore" component={CreateStoreScreen} />
+        <Stack.Screen name="CreateNotice" component={CreateNoticeScreen} />
+        <Stack.Screen name="UpdateStore" component={UpdateStoreScreen} />
+        <Stack.Screen name="Bookmark" component={BookmarkScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
