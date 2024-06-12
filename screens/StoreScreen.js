@@ -19,7 +19,7 @@ const StoreScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(true);
 
   const getBaseUrl = () => {
-    return "http://10.0.2.2:8080";
+    return "http://13.125.82.79:8080";
   };
 
   const formatTime = (timeString) => {
@@ -52,16 +52,14 @@ const StoreScreen = ({ navigation }) => {
           closeMinute: closeTime.minute,
         });
         await fetchNotices(data.id);
-        setLoading(false);
-      } else if (response.status === 400) {
-        navigation.navigate("CreateStore");
       } else {
-        Alert.alert("Error", "Failed to fetch store details.");
-        setLoading(false);
+        navigation.navigate("CreateStore");
+        return; // 추가: CreateStore로 이동 후 더 이상의 처리가 필요 없으므로 return
       }
     } catch (error) {
       console.error("Error fetching store details:", error);
       Alert.alert("Error", "Failed to fetch store details.");
+    } finally {
       setLoading(false);
     }
   };
@@ -123,6 +121,10 @@ const StoreScreen = ({ navigation }) => {
 
   if (loading) {
     return <ActivityIndicator size="large" color="#0000ff" />;
+  }
+
+  if (!storeDetails) {
+    return null; // storeDetails가 null일 때 화면 렌더링 중지
   }
 
   return (

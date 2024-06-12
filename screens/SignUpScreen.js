@@ -15,7 +15,7 @@ const SignUpScreen = ({ navigation }) => {
 
   const handleSignUp = async () => {
     try {
-      const response = await fetch("http://10.0.2.2:8080/join", {
+      const response = await fetch("http://13.125.82.79:8080/join", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,6 +36,9 @@ const SignUpScreen = ({ navigation }) => {
       console.error("Error signing up:", error);
       Alert.alert("회원가입 실패", "알 수 없는 오류가 발생했습니다.");
     }
+
+    console.log("username : ", username);
+    console.log("password", password);
   };
 
   return (

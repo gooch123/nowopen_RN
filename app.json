@@ -18,10 +18,25 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.goochul.nowopen"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "393beebd-b246-4078-ada9-b199955215ac"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/393beebd-b246-4078-ada9-b199955215ac"
+    },
+    "plugins": [
+      "expo-build-properties"
+    ]
   }
 }

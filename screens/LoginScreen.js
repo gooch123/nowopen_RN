@@ -16,7 +16,7 @@ const LoginScreen = ({ navigation }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch("http://10.0.2.2:8080/login", {
+      const response = await fetch("http://13.125.82.79:8080/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -26,6 +26,7 @@ const LoginScreen = ({ navigation }) => {
 
       if (response.ok) {
         const sessionId = await response.text();
+        console.log("sessionId : ", sessionId);
         await AsyncStorage.setItem("sessionId", sessionId);
         Alert.alert("Login Successful", "You are now logged in.", [
           { text: "OK", onPress: () => navigation.navigate("Store") },

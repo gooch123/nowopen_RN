@@ -19,7 +19,7 @@ const CreateStoreScreen = ({ navigation }) => {
   const [closeMinute, setCloseMinute] = useState("00");
 
   const getBaseUrl = () => {
-    return "http://10.0.2.2:8080";
+    return "http://13.125.82.79:8080";
   };
 
   const padTime = (time) => {
@@ -29,6 +29,7 @@ const CreateStoreScreen = ({ navigation }) => {
   const createStore = async () => {
     try {
       const sessionId = await AsyncStorage.getItem("sessionId");
+      console.log("sessionId : ", sessionId);
       const response = await fetch(`${getBaseUrl()}/store/create`, {
         method: "POST",
         headers: {
